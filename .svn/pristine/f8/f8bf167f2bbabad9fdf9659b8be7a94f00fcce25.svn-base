@@ -1,0 +1,37 @@
+package com.qy.mapper;
+
+import com.qy.entity.Info;
+import com.qy.entity.InfoExample;
+import com.qy.entity.InfoWithBLOBs;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface InfoMapper {
+    long countByExample(InfoExample example);
+
+    int deleteByExample(InfoExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(InfoWithBLOBs record);
+
+    int insertSelective(InfoWithBLOBs record);
+
+    List<InfoWithBLOBs> selectByExampleWithBLOBs(InfoExample example);
+
+    List<Info> selectByExample(InfoExample example);
+
+    InfoWithBLOBs selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") InfoWithBLOBs record, @Param("example") InfoExample example);
+
+    int updateByExampleWithBLOBs(@Param("record") InfoWithBLOBs record, @Param("example") InfoExample example);
+
+    int updateByExample(@Param("record") Info record, @Param("example") InfoExample example);
+
+    int updateByPrimaryKeySelective(InfoWithBLOBs record);
+
+    int updateByPrimaryKeyWithBLOBs(InfoWithBLOBs record);
+
+    int updateByPrimaryKey(Info record);
+}

@@ -1,0 +1,30 @@
+package com.qy.mapper;
+
+import com.qy.entity.SysAdminManager;
+import com.qy.entity.SysAdminManagerExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface SysAdminManagerMapper {
+    long countByExample(SysAdminManagerExample example);
+
+    int deleteByExample(SysAdminManagerExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(SysAdminManager record);
+
+    int insertSelective(SysAdminManager record);
+
+    List<SysAdminManager> selectByExample(SysAdminManagerExample example);
+
+    SysAdminManager selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") SysAdminManager record, @Param("example") SysAdminManagerExample example);
+
+    int updateByExample(@Param("record") SysAdminManager record, @Param("example") SysAdminManagerExample example);
+
+    int updateByPrimaryKeySelective(SysAdminManager record);
+
+    int updateByPrimaryKey(SysAdminManager record);
+}

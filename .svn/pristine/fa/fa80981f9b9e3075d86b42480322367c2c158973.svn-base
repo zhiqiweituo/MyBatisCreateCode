@@ -1,0 +1,265 @@
+package com.qy.entity;
+
+import java.util.Date;
+
+public class Info {
+    private Integer id;
+
+    private String file;
+
+    private String title;
+
+    private String subtitle;
+
+    private String attachment;
+
+    private String contentAttaName;
+
+    private String titleColor;
+
+    private Integer click;
+
+    private String keywords;
+
+    private String draftManEn;
+
+    private String draftManCn;
+
+    private String dept;
+
+    private Date draftDate;
+
+    private String infoImport;
+
+    private String readerCn;
+
+    private Date pubDate;
+
+    private Date pubTime;
+
+    private String oldDate;
+
+    private String infoTypeId;
+
+    private String infoTypeName;
+
+    private String infoManagerCn;
+
+    private String infoManagerEn;
+
+    private Integer topNews;
+
+    private Integer okPic;
+
+    private String picAttachment;
+
+    private String picShow;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file == null ? null : file.trim();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle == null ? null : subtitle.trim();
+    }
+
+    public String getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(String attachment) {
+        this.attachment = attachment == null ? null : attachment.trim();
+    }
+
+    public String getContentAttaName() {
+        return contentAttaName;
+    }
+
+    public void setContentAttaName(String contentAttaName) {
+        this.contentAttaName = contentAttaName == null ? null : contentAttaName.trim();
+    }
+
+    public String getTitleColor() {
+        return titleColor;
+    }
+
+    public void setTitleColor(String titleColor) {
+        this.titleColor = titleColor == null ? null : titleColor.trim();
+    }
+
+    public Integer getClick() {
+        return click;
+    }
+
+    public void setClick(Integer click) {
+        this.click = click;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords == null ? null : keywords.trim();
+    }
+
+    public String getDraftManEn() {
+        return draftManEn;
+    }
+
+    public void setDraftManEn(String draftManEn) {
+        this.draftManEn = draftManEn == null ? null : draftManEn.trim();
+    }
+
+    public String getDraftManCn() {
+        return draftManCn;
+    }
+
+    public void setDraftManCn(String draftManCn) {
+        this.draftManCn = draftManCn == null ? null : draftManCn.trim();
+    }
+
+    public String getDept() {
+        return dept;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept == null ? null : dept.trim();
+    }
+
+    public Date getDraftDate() {
+        return draftDate;
+    }
+
+    public void setDraftDate(Date draftDate) {
+        this.draftDate = draftDate;
+    }
+
+    public String getInfoImport() {
+        return infoImport;
+    }
+
+    public void setInfoImport(String infoImport) {
+        this.infoImport = infoImport == null ? null : infoImport.trim();
+    }
+
+    public String getReaderCn() {
+        return readerCn;
+    }
+
+    public void setReaderCn(String readerCn) {
+        this.readerCn = readerCn == null ? null : readerCn.trim();
+    }
+
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
+    }
+
+    public Date getPubTime() {
+        return pubTime;
+    }
+
+    public void setPubTime(Date pubTime) {
+        this.pubTime = pubTime;
+    }
+
+    public String getOldDate() {
+        return oldDate;
+    }
+
+    public void setOldDate(String oldDate) {
+        this.oldDate = oldDate == null ? null : oldDate.trim();
+    }
+
+    public String getInfoTypeId() {
+        return infoTypeId;
+    }
+
+    public void setInfoTypeId(String infoTypeId) {
+        this.infoTypeId = infoTypeId == null ? null : infoTypeId.trim();
+    }
+
+    public String getInfoTypeName() {
+        return infoTypeName;
+    }
+
+    public void setInfoTypeName(String infoTypeName) {
+        this.infoTypeName = infoTypeName == null ? null : infoTypeName.trim();
+    }
+
+    public String getInfoManagerCn() {
+        return infoManagerCn;
+    }
+
+    public void setInfoManagerCn(String infoManagerCn) {
+        this.infoManagerCn = infoManagerCn == null ? null : infoManagerCn.trim();
+    }
+
+    public String getInfoManagerEn() {
+        return infoManagerEn;
+    }
+
+    public void setInfoManagerEn(String infoManagerEn) {
+        this.infoManagerEn = infoManagerEn == null ? null : infoManagerEn.trim();
+    }
+
+    public Integer getTopNews() {
+        return topNews;
+    }
+
+    public void setTopNews(Integer topNews) {
+        this.topNews = topNews;
+    }
+
+    public Integer getOkPic() {
+        return okPic;
+    }
+
+    public void setOkPic(Integer okPic) {
+        this.okPic = okPic;
+    }
+
+    public String getPicAttachment() {
+        return picAttachment;
+    }
+
+    public void setPicAttachment(String picAttachment) {
+        this.picAttachment = picAttachment == null ? null : picAttachment.trim();
+    }
+
+    public String getPicShow() {
+        return picShow;
+    }
+
+    public void setPicShow(String picShow) {
+        this.picShow = picShow == null ? null : picShow.trim();
+    }
+}

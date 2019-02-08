@@ -1,0 +1,205 @@
+package com.qy.entity;
+
+import java.util.Date;
+
+public class Notice {
+    private Integer id;
+
+    private String infoTypeId;
+
+    private String infoTypeName;
+
+    private String noticeTitle;
+
+    private String titleColor;
+
+    private Integer click;
+
+    private String keywords;
+
+    private String docDbPath;
+
+    private String docUuid;
+
+    private String draftDate;
+
+    private String draftCn;
+
+    private String draftEn;
+
+    private String isSended;
+
+    private String isRelease;
+
+    private Date pubTime;
+
+    private String authors;
+
+    private String attachmentPath;
+
+    private String officeDocLink;
+
+    private String attDocLink;
+
+    private String summary;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getInfoTypeId() {
+        return infoTypeId;
+    }
+
+    public void setInfoTypeId(String infoTypeId) {
+        this.infoTypeId = infoTypeId == null ? null : infoTypeId.trim();
+    }
+
+    public String getInfoTypeName() {
+        return infoTypeName;
+    }
+
+    public void setInfoTypeName(String infoTypeName) {
+        this.infoTypeName = infoTypeName == null ? null : infoTypeName.trim();
+    }
+
+    public String getNoticeTitle() {
+        return noticeTitle;
+    }
+
+    public void setNoticeTitle(String noticeTitle) {
+        this.noticeTitle = noticeTitle == null ? null : noticeTitle.trim();
+    }
+
+    public String getTitleColor() {
+        return titleColor;
+    }
+
+    public void setTitleColor(String titleColor) {
+        this.titleColor = titleColor == null ? null : titleColor.trim();
+    }
+
+    public Integer getClick() {
+        return click;
+    }
+
+    public void setClick(Integer click) {
+        this.click = click;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords == null ? null : keywords.trim();
+    }
+
+    public String getDocDbPath() {
+        return docDbPath;
+    }
+
+    public void setDocDbPath(String docDbPath) {
+        this.docDbPath = docDbPath == null ? null : docDbPath.trim();
+    }
+
+    public String getDocUuid() {
+        return docUuid;
+    }
+
+    public void setDocUuid(String docUuid) {
+        this.docUuid = docUuid == null ? null : docUuid.trim();
+    }
+
+    public String getDraftDate() {
+        return draftDate;
+    }
+
+    public void setDraftDate(String draftDate) {
+        this.draftDate = draftDate == null ? null : draftDate.trim();
+    }
+
+    public String getDraftCn() {
+        return draftCn;
+    }
+
+    public void setDraftCn(String draftCn) {
+        this.draftCn = draftCn == null ? null : draftCn.trim();
+    }
+
+    public String getDraftEn() {
+        return draftEn;
+    }
+
+    public void setDraftEn(String draftEn) {
+        this.draftEn = draftEn == null ? null : draftEn.trim();
+    }
+
+    public String getIsSended() {
+        return isSended;
+    }
+
+    public void setIsSended(String isSended) {
+        this.isSended = isSended == null ? null : isSended.trim();
+    }
+
+    public String getIsRelease() {
+        return isRelease;
+    }
+
+    public void setIsRelease(String isRelease) {
+        this.isRelease = isRelease == null ? null : isRelease.trim();
+    }
+
+    public Date getPubTime() {
+        return pubTime;
+    }
+
+    public void setPubTime(Date pubTime) {
+        this.pubTime = pubTime;
+    }
+
+    public String getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(String authors) {
+        this.authors = authors == null ? null : authors.trim();
+    }
+
+    public String getAttachmentPath() {
+        return attachmentPath;
+    }
+
+    public void setAttachmentPath(String attachmentPath) {
+        this.attachmentPath = attachmentPath == null ? null : attachmentPath.trim();
+    }
+
+    public String getOfficeDocLink() {
+        return officeDocLink;
+    }
+
+    public void setOfficeDocLink(String officeDocLink) {
+        this.officeDocLink = officeDocLink == null ? null : officeDocLink.trim();
+    }
+
+    public String getAttDocLink() {
+        return attDocLink;
+    }
+
+    public void setAttDocLink(String attDocLink) {
+        this.attDocLink = attDocLink == null ? null : attDocLink.trim();
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary == null ? null : summary.trim();
+    }
+}

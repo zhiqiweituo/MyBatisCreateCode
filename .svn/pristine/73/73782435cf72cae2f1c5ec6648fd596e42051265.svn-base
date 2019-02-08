@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qy.mapper.InfoMapper">
+  <resultMap id="BaseResultMap" type="com.qy.entity.Info">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="$file" jdbcType="VARCHAR" property="file" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="subtitle" jdbcType="VARCHAR" property="subtitle" />
+    <result column="attachment" jdbcType="VARCHAR" property="attachment" />
+    <result column="content_atta_name" jdbcType="VARCHAR" property="contentAttaName" />
+    <result column="title_color" jdbcType="VARCHAR" property="titleColor" />
+    <result column="click" jdbcType="INTEGER" property="click" />
+    <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+    <result column="draft_man_en" jdbcType="VARCHAR" property="draftManEn" />
+    <result column="draft_man_cn" jdbcType="VARCHAR" property="draftManCn" />
+    <result column="dept" jdbcType="VARCHAR" property="dept" />
+    <result column="draft_date" jdbcType="DATE" property="draftDate" />
+    <result column="info_import" jdbcType="VARCHAR" property="infoImport" />
+    <result column="reader_cn" jdbcType="VARCHAR" property="readerCn" />
+    <result column="pub_date" jdbcType="DATE" property="pubDate" />
+    <result column="pub_time" jdbcType="TIMESTAMP" property="pubTime" />
+    <result column="old_date" jdbcType="VARCHAR" property="oldDate" />
+    <result column="info_type_id" jdbcType="VARCHAR" property="infoTypeId" />
+    <result column="info_type_name" jdbcType="VARCHAR" property="infoTypeName" />
+    <result column="info_manager_cn" jdbcType="CHAR" property="infoManagerCn" />
+    <result column="info_manager_en" jdbcType="CHAR" property="infoManagerEn" />
+    <result column="top_news" jdbcType="INTEGER" property="topNews" />
+    <result column="ok_pic" jdbcType="INTEGER" property="okPic" />
+    <result column="pic_attachment" jdbcType="VARCHAR" property="picAttachment" />
+    <result column="pic_show" jdbcType="VARCHAR" property="picShow" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.qy.entity.InfoWithBLOBs">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="summary" jdbcType="LONGVARCHAR" property="summary" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, $file, title, subtitle, attachment, content_atta_name, title_color, click, keywords, 
+    draft_man_en, draft_man_cn, dept, draft_date, info_import, reader_cn, pub_date, pub_time, 
+    old_date, info_type_id, info_type_name, info_manager_cn, info_manager_en, top_news, 
+    ok_pic, pic_attachment, pic_show
+  </sql>
+  <sql id="Blob_Column_List">
+    content, summary
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.qy.entity.InfoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.qy.entity.InfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qy.entity.InfoExample">
+    delete from info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qy.entity.InfoWithBLOBs">
+    insert into info (id, $file, title, 
+      subtitle, attachment, content_atta_name, 
+      title_color, click, keywords, 
+      draft_man_en, draft_man_cn, dept, 
+      draft_date, info_import, reader_cn, 
+      pub_date, pub_time, old_date, 
+      info_type_id, info_type_name, info_manager_cn, 
+      info_manager_en, top_news, ok_pic, 
+      pic_attachment, pic_show, content, 
+      summary)
+    values (#{id,jdbcType=INTEGER}, #{file,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{subtitle,jdbcType=VARCHAR}, #{attachment,jdbcType=VARCHAR}, #{contentAttaName,jdbcType=VARCHAR}, 
+      #{titleColor,jdbcType=VARCHAR}, #{click,jdbcType=INTEGER}, #{keywords,jdbcType=VARCHAR}, 
+      #{draftManEn,jdbcType=VARCHAR}, #{draftManCn,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{draftDate,jdbcType=DATE}, #{infoImport,jdbcType=VARCHAR}, #{readerCn,jdbcType=VARCHAR}, 
+      #{pubDate,jdbcType=DATE}, #{pubTime,jdbcType=TIMESTAMP}, #{oldDate,jdbcType=VARCHAR}, 
+      #{infoTypeId,jdbcType=VARCHAR}, #{infoTypeName,jdbcType=VARCHAR}, #{infoManagerCn,jdbcType=CHAR}, 
+      #{infoManagerEn,jdbcType=CHAR}, #{topNews,jdbcType=INTEGER}, #{okPic,jdbcType=INTEGER}, 
+      #{picAttachment,jdbcType=VARCHAR}, #{picShow,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, 
+      #{summary,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qy.entity.InfoWithBLOBs">
+    insert into info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="file != null">
+        $file,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="subtitle != null">
+        subtitle,
+      </if>
+      <if test="attachment != null">
+        attachment,
+      </if>
+      <if test="contentAttaName != null">
+        content_atta_name,
+      </if>
+      <if test="titleColor != null">
+        title_color,
+      </if>
+      <if test="click != null">
+        click,
+      </if>
+      <if test="keywords != null">
+        keywords,
+      </if>
+      <if test="draftManEn != null">
+        draft_man_en,
+      </if>
+      <if test="draftManCn != null">
+        draft_man_cn,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="draftDate != null">
+        draft_date,
+      </if>
+      <if test="infoImport != null">
+        info_import,
+      </if>
+      <if test="readerCn != null">
+        reader_cn,
+      </if>
+      <if test="pubDate != null">
+        pub_date,
+      </if>
+      <if test="pubTime != null">
+        pub_time,
+      </if>
+      <if test="oldDate != null">
+        old_date,
+      </if>
+      <if test="infoTypeId != null">
+        info_type_id,
+      </if>
+      <if test="infoTypeName != null">
+        info_type_name,
+      </if>
+      <if test="infoManagerCn != null">
+        info_manager_cn,
+      </if>
+      <if test="infoManagerEn != null">
+        info_manager_en,
+      </if>
+      <if test="topNews != null">
+        top_news,
+      </if>
+      <if test="okPic != null">
+        ok_pic,
+      </if>
+      <if test="picAttachment != null">
+        pic_attachment,
+      </if>
+      <if test="picShow != null">
+        pic_show,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="file != null">
+        #{file,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null">
+        #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null">
+        #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="contentAttaName != null">
+        #{contentAttaName,jdbcType=VARCHAR},
+      </if>
+      <if test="titleColor != null">
+        #{titleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="click != null">
+        #{click,jdbcType=INTEGER},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="draftManEn != null">
+        #{draftManEn,jdbcType=VARCHAR},
+      </if>
+      <if test="draftManCn != null">
+        #{draftManCn,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="draftDate != null">
+        #{draftDate,jdbcType=DATE},
+      </if>
+      <if test="infoImport != null">
+        #{infoImport,jdbcType=VARCHAR},
+      </if>
+      <if test="readerCn != null">
+        #{readerCn,jdbcType=VARCHAR},
+      </if>
+      <if test="pubDate != null">
+        #{pubDate,jdbcType=DATE},
+      </if>
+      <if test="pubTime != null">
+        #{pubTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oldDate != null">
+        #{oldDate,jdbcType=VARCHAR},
+      </if>
+      <if test="infoTypeId != null">
+        #{infoTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoTypeName != null">
+        #{infoTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="infoManagerCn != null">
+        #{infoManagerCn,jdbcType=CHAR},
+      </if>
+      <if test="infoManagerEn != null">
+        #{infoManagerEn,jdbcType=CHAR},
+      </if>
+      <if test="topNews != null">
+        #{topNews,jdbcType=INTEGER},
+      </if>
+      <if test="okPic != null">
+        #{okPic,jdbcType=INTEGER},
+      </if>
+      <if test="picAttachment != null">
+        #{picAttachment,jdbcType=VARCHAR},
+      </if>
+      <if test="picShow != null">
+        #{picShow,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qy.entity.InfoExample" resultType="java.lang.Long">
+    select count(*) from info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.file != null">
+        $file = #{record.file,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subtitle != null">
+        subtitle = #{record.subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachment != null">
+        attachment = #{record.attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contentAttaName != null">
+        content_atta_name = #{record.contentAttaName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.titleColor != null">
+        title_color = #{record.titleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.click != null">
+        click = #{record.click,jdbcType=INTEGER},
+      </if>
+      <if test="record.keywords != null">
+        keywords = #{record.keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.draftManEn != null">
+        draft_man_en = #{record.draftManEn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.draftManCn != null">
+        draft_man_cn = #{record.draftManCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dept != null">
+        dept = #{record.dept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.draftDate != null">
+        draft_date = #{record.draftDate,jdbcType=DATE},
+      </if>
+      <if test="record.infoImport != null">
+        info_import = #{record.infoImport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.readerCn != null">
+        reader_cn = #{record.readerCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pubDate != null">
+        pub_date = #{record.pubDate,jdbcType=DATE},
+      </if>
+      <if test="record.pubTime != null">
+        pub_time = #{record.pubTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.oldDate != null">
+        old_date = #{record.oldDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.infoTypeId != null">
+        info_type_id = #{record.infoTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.infoTypeName != null">
+        info_type_name = #{record.infoTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.infoManagerCn != null">
+        info_manager_cn = #{record.infoManagerCn,jdbcType=CHAR},
+      </if>
+      <if test="record.infoManagerEn != null">
+        info_manager_en = #{record.infoManagerEn,jdbcType=CHAR},
+      </if>
+      <if test="record.topNews != null">
+        top_news = #{record.topNews,jdbcType=INTEGER},
+      </if>
+      <if test="record.okPic != null">
+        ok_pic = #{record.okPic,jdbcType=INTEGER},
+      </if>
+      <if test="record.picAttachment != null">
+        pic_attachment = #{record.picAttachment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picShow != null">
+        pic_show = #{record.picShow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.summary != null">
+        summary = #{record.summary,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update info
+    set id = #{record.id,jdbcType=INTEGER},
+      $file = #{record.file,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
+      subtitle = #{record.subtitle,jdbcType=VARCHAR},
+      attachment = #{record.attachment,jdbcType=VARCHAR},
+      content_atta_name = #{record.contentAttaName,jdbcType=VARCHAR},
+      title_color = #{record.titleColor,jdbcType=VARCHAR},
+      click = #{record.click,jdbcType=INTEGER},
+      keywords = #{record.keywords,jdbcType=VARCHAR},
+      draft_man_en = #{record.draftManEn,jdbcType=VARCHAR},
+      draft_man_cn = #{record.draftManCn,jdbcType=VARCHAR},
+      dept = #{record.dept,jdbcType=VARCHAR},
+      draft_date = #{record.draftDate,jdbcType=DATE},
+      info_import = #{record.infoImport,jdbcType=VARCHAR},
+      reader_cn = #{record.readerCn,jdbcType=VARCHAR},
+      pub_date = #{record.pubDate,jdbcType=DATE},
+      pub_time = #{record.pubTime,jdbcType=TIMESTAMP},
+      old_date = #{record.oldDate,jdbcType=VARCHAR},
+      info_type_id = #{record.infoTypeId,jdbcType=VARCHAR},
+      info_type_name = #{record.infoTypeName,jdbcType=VARCHAR},
+      info_manager_cn = #{record.infoManagerCn,jdbcType=CHAR},
+      info_manager_en = #{record.infoManagerEn,jdbcType=CHAR},
+      top_news = #{record.topNews,jdbcType=INTEGER},
+      ok_pic = #{record.okPic,jdbcType=INTEGER},
+      pic_attachment = #{record.picAttachment,jdbcType=VARCHAR},
+      pic_show = #{record.picShow,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=LONGVARCHAR},
+      summary = #{record.summary,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update info
+    set id = #{record.id,jdbcType=INTEGER},
+      $file = #{record.file,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
+      subtitle = #{record.subtitle,jdbcType=VARCHAR},
+      attachment = #{record.attachment,jdbcType=VARCHAR},
+      content_atta_name = #{record.contentAttaName,jdbcType=VARCHAR},
+      title_color = #{record.titleColor,jdbcType=VARCHAR},
+      click = #{record.click,jdbcType=INTEGER},
+      keywords = #{record.keywords,jdbcType=VARCHAR},
+      draft_man_en = #{record.draftManEn,jdbcType=VARCHAR},
+      draft_man_cn = #{record.draftManCn,jdbcType=VARCHAR},
+      dept = #{record.dept,jdbcType=VARCHAR},
+      draft_date = #{record.draftDate,jdbcType=DATE},
+      info_import = #{record.infoImport,jdbcType=VARCHAR},
+      reader_cn = #{record.readerCn,jdbcType=VARCHAR},
+      pub_date = #{record.pubDate,jdbcType=DATE},
+      pub_time = #{record.pubTime,jdbcType=TIMESTAMP},
+      old_date = #{record.oldDate,jdbcType=VARCHAR},
+      info_type_id = #{record.infoTypeId,jdbcType=VARCHAR},
+      info_type_name = #{record.infoTypeName,jdbcType=VARCHAR},
+      info_manager_cn = #{record.infoManagerCn,jdbcType=CHAR},
+      info_manager_en = #{record.infoManagerEn,jdbcType=CHAR},
+      top_news = #{record.topNews,jdbcType=INTEGER},
+      ok_pic = #{record.okPic,jdbcType=INTEGER},
+      pic_attachment = #{record.picAttachment,jdbcType=VARCHAR},
+      pic_show = #{record.picShow,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qy.entity.InfoWithBLOBs">
+    update info
+    <set>
+      <if test="file != null">
+        $file = #{file,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null">
+        subtitle = #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="attachment != null">
+        attachment = #{attachment,jdbcType=VARCHAR},
+      </if>
+      <if test="contentAttaName != null">
+        content_atta_name = #{contentAttaName,jdbcType=VARCHAR},
+      </if>
+      <if test="titleColor != null">
+        title_color = #{titleColor,jdbcType=VARCHAR},
+      </if>
+      <if test="click != null">
+        click = #{click,jdbcType=INTEGER},
+      </if>
+      <if test="keywords != null">
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="draftManEn != null">
+        draft_man_en = #{draftManEn,jdbcType=VARCHAR},
+      </if>
+      <if test="draftManCn != null">
+        draft_man_cn = #{draftManCn,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="draftDate != null">
+        draft_date = #{draftDate,jdbcType=DATE},
+      </if>
+      <if test="infoImport != null">
+        info_import = #{infoImport,jdbcType=VARCHAR},
+      </if>
+      <if test="readerCn != null">
+        reader_cn = #{readerCn,jdbcType=VARCHAR},
+      </if>
+      <if test="pubDate != null">
+        pub_date = #{pubDate,jdbcType=DATE},
+      </if>
+      <if test="pubTime != null">
+        pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oldDate != null">
+        old_date = #{oldDate,jdbcType=VARCHAR},
+      </if>
+      <if test="infoTypeId != null">
+        info_type_id = #{infoTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoTypeName != null">
+        info_type_name = #{infoTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="infoManagerCn != null">
+        info_manager_cn = #{infoManagerCn,jdbcType=CHAR},
+      </if>
+      <if test="infoManagerEn != null">
+        info_manager_en = #{infoManagerEn,jdbcType=CHAR},
+      </if>
+      <if test="topNews != null">
+        top_news = #{topNews,jdbcType=INTEGER},
+      </if>
+      <if test="okPic != null">
+        ok_pic = #{okPic,jdbcType=INTEGER},
+      </if>
+      <if test="picAttachment != null">
+        pic_attachment = #{picAttachment,jdbcType=VARCHAR},
+      </if>
+      <if test="picShow != null">
+        pic_show = #{picShow,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.qy.entity.InfoWithBLOBs">
+    update info
+    set $file = #{file,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      subtitle = #{subtitle,jdbcType=VARCHAR},
+      attachment = #{attachment,jdbcType=VARCHAR},
+      content_atta_name = #{contentAttaName,jdbcType=VARCHAR},
+      title_color = #{titleColor,jdbcType=VARCHAR},
+      click = #{click,jdbcType=INTEGER},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      draft_man_en = #{draftManEn,jdbcType=VARCHAR},
+      draft_man_cn = #{draftManCn,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      draft_date = #{draftDate,jdbcType=DATE},
+      info_import = #{infoImport,jdbcType=VARCHAR},
+      reader_cn = #{readerCn,jdbcType=VARCHAR},
+      pub_date = #{pubDate,jdbcType=DATE},
+      pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      old_date = #{oldDate,jdbcType=VARCHAR},
+      info_type_id = #{infoTypeId,jdbcType=VARCHAR},
+      info_type_name = #{infoTypeName,jdbcType=VARCHAR},
+      info_manager_cn = #{infoManagerCn,jdbcType=CHAR},
+      info_manager_en = #{infoManagerEn,jdbcType=CHAR},
+      top_news = #{topNews,jdbcType=INTEGER},
+      ok_pic = #{okPic,jdbcType=INTEGER},
+      pic_attachment = #{picAttachment,jdbcType=VARCHAR},
+      pic_show = #{picShow,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR},
+      summary = #{summary,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qy.entity.Info">
+    update info
+    set $file = #{file,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      subtitle = #{subtitle,jdbcType=VARCHAR},
+      attachment = #{attachment,jdbcType=VARCHAR},
+      content_atta_name = #{contentAttaName,jdbcType=VARCHAR},
+      title_color = #{titleColor,jdbcType=VARCHAR},
+      click = #{click,jdbcType=INTEGER},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      draft_man_en = #{draftManEn,jdbcType=VARCHAR},
+      draft_man_cn = #{draftManCn,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      draft_date = #{draftDate,jdbcType=DATE},
+      info_import = #{infoImport,jdbcType=VARCHAR},
+      reader_cn = #{readerCn,jdbcType=VARCHAR},
+      pub_date = #{pubDate,jdbcType=DATE},
+      pub_time = #{pubTime,jdbcType=TIMESTAMP},
+      old_date = #{oldDate,jdbcType=VARCHAR},
+      info_type_id = #{infoTypeId,jdbcType=VARCHAR},
+      info_type_name = #{infoTypeName,jdbcType=VARCHAR},
+      info_manager_cn = #{infoManagerCn,jdbcType=CHAR},
+      info_manager_en = #{infoManagerEn,jdbcType=CHAR},
+      top_news = #{topNews,jdbcType=INTEGER},
+      ok_pic = #{okPic,jdbcType=INTEGER},
+      pic_attachment = #{picAttachment,jdbcType=VARCHAR},
+      pic_show = #{picShow,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
